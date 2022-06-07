@@ -1,0 +1,14 @@
+server:
+  port: 8081
+spring:
+  security:
+    user:
+      name: bootcamp19
+      password: b00tc4mp19
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/EduardoEspinoza14/service-configuration-bootcamp19.git
+          search-paths: /
+          default-label: master
