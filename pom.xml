@@ -83,6 +83,7 @@
 				</dependencies>
 			</plugin>
 		</plugins>
+		<finalName>config-server</finalName>
 	</build>
 
 </project>
