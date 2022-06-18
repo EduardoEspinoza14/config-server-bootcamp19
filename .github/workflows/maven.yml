@@ -26,7 +26,6 @@ jobs:
       run: mvn -B clean package
     - name: Maven Verify
       run: mvn -B clean verify
-
   docker:
     name: Publish - Docker Hub
     runs-on: ubuntu-18.04
@@ -49,3 +48,12 @@ jobs:
         run: docker build -t $REPO:latest -t $REPO:${GITHUB_SHA::8} .
       - name: Publish Docker image
         run: docker push $REPO
+  redeploy:
+    name: Redeploy webhook call
+    runs-on: ubuntu-18.04
+    needs: [docker]
+    steps:
+      - name: Deploy docker container webhook
+        uses: joelwmale/webhook-action@master
+        env:
+          WEBHOOK_URL: ${{ secrets.DEPLOY_WEBHOOK_URL  }}
