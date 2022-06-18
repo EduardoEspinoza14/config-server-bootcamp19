@@ -1,5 +1,5 @@
-FROM openjdk:8
+FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 EXPOSE 8081
-ADD ./target/config-server-0.0.1-SNAPSHOT.jar config-server.jar
+ADD ./target/*.jar config-server.jar
 ENTRYPOINT ["java", "-jar", "config-server.jar"]
